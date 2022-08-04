@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* //////// --------------------- RESET STYLES --------------------- //////// */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font-family: "Poppins", sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a{
+    text-decoration: none;
+    color:blue;
+}
+
+a:hover{
+    
+}
+
+a:visited{
+    color:blue;
+}
+
+button {
+    font-family: Poppins, sans-serif;
+    font-size: 1rem;
+    color:blue;
+}
+
+
+/*CUSTOM STYLES*/
+.container {
+    display:flex;
+    flex-direction: column;
+    width: 96%;
+    padding: 2%;
+    background-image:url(../img/qatar.jpg);
+    background-size: cover;  
+}
+
+.display {
+    font-size:68px;
+    font-weight: 600;
+     ;
+}
+
+.margin-t{
+    margin-top:3%;
+}
+
+.margin-b{
+    margin-bottom: 3%;
+}
+.text-white {
+    color:#fff;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.cardPosition{
+    width: 100%;
+}
+
+.card {
+    width: 96%;
+    padding: 2%;
+}
+
+.cardHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(200, 200, 200, 0.5);
+}
+
+.cardDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    color: rgb(73 73 73 / 74%);
+}
+
+.cardSub{
+    padding:10px;
+    border: 1px solid rgb(62 21 238);
+    background-color: rgb(0 0 238 / 17%);
+    border-radius:5px;
+    display: flex;
+    align-items: center;
+    transition:ease-in 300ms all; 
+}
+
+.cardSub:hover{
+    background-color: rgba(125, 125, 255, 0.489);
+    box-shadow: 0px 2px 2px rgb(0 0 238 / 10%), 0px 5px 15px rgb(0 0 238 / 15%), 0px 10px 30px rgb(0 0 238 / 5%) ;
+    transition:ease-out 300ms all; 
+}
+
+.p-y{
+    padding:0.4rem 0;
+}
+
+.p-y2{
+    padding:0.8rem 0;
+}
+
+.p-y3{
+    padding:1.2rem 0;
+}
+
+.p-y4{
+    padding:5rem 0;
+}
+
+.p-t {
+    padding-top:0.4rem;
+}
+
+.p-t2 {
+    padding-top:0.8rem;
+}
+
+.p-b2 {
+    padding-bottom:0.8rem;
+}
+
+.p-x {
+    padding:0.4rem 0;
+}
+
+.p-x2 {
+    padding:0 0.8rem;
+}
+.dateLeft{
+    text-align: left;
+}
+
+.dateRight{
+    text-align: right;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.partidoRivales{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid rgb(200, 200, 200, 0.5);
+}
+
+.Local {
+    width: 47%;
+}
+
+.vs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgb(200, 200, 200, 0.3);
+    background-color: rgb(200, 200, 200, 0.2);
+    padding: 4px;
+    width: 30px;
+    height: 30px;
+}
+
+.Visitante {
+    width: 47%;
+}
+
+.partido {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgb(200, 200, 200, 0.5);
+    border-radius: 10px;
+    padding: 2%;
+    transition: ease-out 300ms all;
+}
+
+.partido:hover {
+    border: 1px solid rgb(62 21 238);
+    border-radius: 10px;
+    background-color: rgb(222, 222, 222, 0.3);
+    transition: ease-in 300ms all;
+    box-shadow: 0px 2px 2px rgba(120, 120, 120, 0.1), 0px 5px 15px rgba(192, 192, 192, 0.15), 0px 10px 30px rgba(92, 92, 92, 0.05) ;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.fecha {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.team {
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: rgb(200, 200, 200, 0.2);
+    border: 1px solid rgb(200, 200, 200, 0.3);
+}
+
+.teamNombre {
+    display: flex;
+    text-align: center;
+    font-weight: 800;
+    color: rgb(73 73 73 / 74%);
+}
+
+.teamScore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 800;
+    font-size: 2rem;
+    height: 24px;
+    width: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(73 73 73 / 74%);
+    background-color: rgb(200, 200, 200, 0.2);
+    border: 1px solid rgb(200, 200, 200, 0.3);
+}
+
+.teamInfo {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(16, 1fr);
+    }       
+    
+    
+}
+
+
+@media only screen and (max-width: 400px) {
+    .vs {
+        display: none;
+    }
+    .fecha{
+        flex-direction: column-reverse;
+    }
+    .stadium {
+        padding: 0.8rem 0;
+    }
+    .dateRight{
+        text-align:center;
+    }
+    .dateLeft{
+        text-align:center;
+    }
+    .cardHeader {
+        flex-direction: column;
+        height: 91px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
