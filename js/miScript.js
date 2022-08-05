@@ -1,8 +1,33 @@
 //INFO EQUIPOS
 
-const NombresEquipos = ["Qatar", "Ecuador", "Senegal", "Holanda", "Inglaterra", "Irán", "Estados Unidos", "Wales", "Argentina", "Arabia Saudita", "México", "Polonia", "Francia", "Autralia", "Dinamarca", "Tunez", "Bélgica", "Canadá", "Marruecos", "Croacia", "España", "Costa Rica", "Alemania", "Japón", "Bélgica", "Canadá", "Marruecos", "Croacia", "Brasil", "Serbia", "Suiza", "Camerún"]
-const Grupo = ["A", "A", "A", "A", "B", "B", "B", "B", "C", "C", "C", "C", "D", "D", "D", "D", "F", "F", "F", "F", "G", "G", "G", "G", "H", "H", "H", "H"]
-const Flag = ["Qatar.svg", "Ecuador.png", "Senegal.png", "Holanda.png", "Inglaterra.png", "Iran.png", "Estados-Unidos.png", "Wales.png", "Argentina.png", "Arabia Saudita.png", "México.png", "Polonia.png", "Francia.png", "Autralia.png", "Dinamarca.png", "Tunez.png", "Belgica.png", "Canada.png", "Marruecos.png", "Croacia.png", "España.png", "Costa-Rica.png", "Alemania.png", "Japon.png", "Belgica.png", "Canada.png", "Marruecos.png", "Croacia.png", "Brasil.png", "Serbia.png", "Suiza.png", "Camerun.png"]
+//INFO EQUIPOS
+const NombresEquipos = ["Qatar", "Ecuador", "Senegal", "Holanda",
+                        "Inglaterra", "Irán", "Estados Unidos", "Wales", 
+                        "Argentina", "Arabia Saudita", "México", "Polonia",
+                        "Francia", "Autralia", "Dinamarca", "Tunez", 
+                        "Alemania", "Costa Rica", "España", "Japón", 
+                        "Bélgica", "Canadá", "Marruecos", "Croacia", 
+                        "Brasil", "Serbia", "Suiza", "Camerun", 
+                        "Ghana", "Korea", "Portugal", "Uruguay"]
+
+const Grupo = ["A", "A", "A", "A", 
+               "B", "B", "B", "B",
+               "C", "C", "C", "C", 
+               "D", "D", "D", "D",
+               "E", "E", "E", "E", 
+               "F", "F", "F", "F",
+               "G", "G", "G", "G",
+               "H", "H", "H", "H"]
+
+const Flag = ["Qatar.png", "Ecuador.png", "Senegal.png", "Holanda.png", 
+              "Inglaterra.png", "Iran.png", "Estados-Unidos.png", "Walles.png", 
+              "Argentina.png", "Arabia Saudita.png", "Mexico.png", "Polonia.png",
+              "Francia.png", "Australia.png", "Dinamarca.png", "Tunez.png", 
+              "Alemania.png", "Costa Rica.png", "Espana.png", "Japon.png", 
+              "Belgica.png", "Canada.png", "Marruecos.png", "Croacia.png",              
+              "Brasil.png", "Serbia.png", "Suiza.png", "Camerun.png",
+              "Ghana.png", "Korea.png", "Portugal.png", "Uruguay.png"]
+
 const PositionInGroup = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
 
 //CREO EQUIPOS
@@ -10,7 +35,7 @@ function CrearEquipo (nombre, group, groupRank, flag) {
     this.nombre = nombre;
     this.group = group;
     this.groupRank = groupRank;
-    this.flag = flag;
+    this.flag = "./flags/" + group + "/" + flag;
 }
 
 var Equipos = []
@@ -76,48 +101,166 @@ for (let i = 0; i < cantidadEquiposPorGrupo -1; i++){
         partidosGrupoA.push (new CrearPartido (Math.random(), Equipos[i],Equipos[j],formatDate(fecha), formatHours(fecha)))
         partidosGrupoB.push (new CrearPartido (Math.random(), Equipos[i+4],Equipos[j+4],formatDate(fecha), formatHours(fecha)))
         partidosGrupoC.push (new CrearPartido (Math.random(), Equipos[i+8],Equipos[j+8],formatDate(fecha), formatHours(fecha)))
-        partidosGrupoD.push (new CrearPartido (Math.random(), Equipos[i+8],Equipos[j+8],formatDate(fecha), formatHours(fecha)))
-        partidosGrupoE.push (new CrearPartido (Math.random(), Equipos[i+8],Equipos[j+8],formatDate(fecha), formatHours(fecha)))
-        partidosGrupoF.push (new CrearPartido (Math.random(), Equipos[i+8],Equipos[j+8],formatDate(fecha), formatHours(fecha)))
-        partidosGrupoG.push (new CrearPartido (Math.random(), Equipos[i+8],Equipos[j+8],formatDate(fecha), formatHours(fecha)))
-        partidosGrupoH.push (new CrearPartido (Math.random(), Equipos[i+8],Equipos[j+8],formatDate(fecha), formatHours(fecha)))
+        partidosGrupoD.push (new CrearPartido (Math.random(), Equipos[i+12],Equipos[j+12],formatDate(fecha), formatHours(fecha)))
+        partidosGrupoE.push (new CrearPartido (Math.random(), Equipos[i+16],Equipos[j+16],formatDate(fecha), formatHours(fecha)))
+        partidosGrupoF.push (new CrearPartido (Math.random(), Equipos[i+20],Equipos[j+20],formatDate(fecha), formatHours(fecha)))
+        partidosGrupoG.push (new CrearPartido (Math.random(), Equipos[i+24],Equipos[j+24],formatDate(fecha), formatHours(fecha)))
+        partidosGrupoH.push (new CrearPartido (Math.random(), Equipos[i+28],Equipos[j+28],formatDate(fecha), formatHours(fecha)))
     }
 }
 
 
 console.log(partidosGrupoA)
-console.log(partidosGrupoB)
-console.log(partidosGrupoC)
-console.log(partidosGrupoD)
-console.log(partidosGrupoE)
-console.log(partidosGrupoF)
-console.log(partidosGrupoG)
-console.log(partidosGrupoH)
+// console.log(partidosGrupoB)
+// console.log(partidosGrupoC)
+// console.log(partidosGrupoD)
+// console.log(partidosGrupoE)
+// console.log(partidosGrupoF)
+// console.log(partidosGrupoG)
+// console.log(partidosGrupoH)
 
 const partidoX = partidosGrupoA[1]
 const partidoX2 = partidosGrupoA[2]
 const partidoX3 = partidosGrupoA[3]
 const partidoX4 = partidosGrupoA[4]
 
-// let GolesLocal = parseInt(prompt("Cargar Resultado Local: "))
-// let GolesVisitante = parseInt(prompt("Cargar Resultado Visitante: "))
-// alert("Cargaste el resultado del primer partido :)")
+let GolesLocal = parseInt(prompt("Cargar Resultado Local: "))
+let GolesVisitante = parseInt(prompt("Cargar Resultado Visitante: "))
+alert("Cargaste el resultado del primer partido :)")
 
-partidoX.cargarResultado(GolesLocal, GolesVisitante)
-partidoX2.cargarResultado(GolesLocal, GolesVisitante)
-partidoX3.cargarResultado(GolesLocal, GolesVisitante)
-partidoX4.cargarResultado(GolesLocal, GolesVisitante)
-
-
-partidoX.resultadoPartido()
-partidoX2.resultadoPartido()
-partidoX3.resultadoPartido()
-partidoX4.resultadoPartido()
+ partidoX.cargarResultado(GolesLocal, GolesVisitante)
+// partidoX2.cargarResultado(GolesLocal, GolesVisitante)
+// partidoX3.cargarResultado(GolesLocal, GolesVisitante)
+// partidoX4.cargarResultado(GolesLocal, GolesVisitante)
 
 
+// partidoX.resultadoPartido()
+// partidoX2.resultadoPartido()
+// partidoX3.resultadoPartido()
+// partidoX4.resultadoPartido()
+
+
+let container = document.getElementById ("container")
+
+
+// for (let i=0; i < Grupo.length ; i++) {
+//     let NuevoGrupo = document.createElement('div')
+//     NuevoGrupo.setAttribute('id', Grupo[i]);
+//     container.innerHTML(NuevoGrupo) 
+// }
+
+const Enfrentamientos = [
+    {grupo: "Grupo A", partidos:partidosGrupoA},
+    {grupo: "Grupo B", partidos:partidosGrupoB},
+    {grupo: "Grupo C", partidos:partidosGrupoC},
+    {grupo: "Grupo D", partidos:partidosGrupoD},
+    {grupo: "Grupo E", partidos:partidosGrupoE},
+    {grupo: "Grupo F", partidos:partidosGrupoF},
+    {grupo: "Grupo G", partidos:partidosGrupoG},
+    {grupo: "Grupo H", partidos:partidosGrupoH},
+]
+
+function CrearGrupos () {
+    let Cardlist = ""
+    for (let elemento of Enfrentamientos){
+        
+        let Contadorpartidos = 0
+        for (let partido of elemento.partidos){
+            console.log(elemento.grupo)
+            Contadorpartidos ++
+            Cardlist +=
+            `<div class="card">
+                <div class="partido">
+                    <div class="cardPosition">
+                        <div class="cardHeader p-b2">
+                            <div class="cardDiv"> 
+                                <h2 class="cardTitle p-y dateLeft bold">${elemento.grupo}</h2>
+                                <p>Partido ${Contadorpartidos} de ${elemento.partidos.length}</p>
+                            </div>
+                            <div>
+                                <div class="p-y dateRight">Inicia</div>
+                                <div class="dateRight"><strong>${partido.dia + " " + partido.hora}</strong></div>
+                            </div>             
+                        </div>
+                    <div class="partidoRivales p-y4">
+                        <div class="Local">
+                            <div class="teamInfo">
+                                <img class="team" src="${partido.Local.flag}" alt="Equipo1">
+                                <h3 class="p-y3 teamNombre">${partido.Local.nombre}</h3>
+                                <div class="contador">
+                                    <button>-</button>
+                                    <h3 class="p-y3 teamScore">${partido.resultado[0]}</h3>
+                                    <button>+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="Visitante">
+                            <div class="teamInfo">
+                                <img class="team" src="${partido.Visitante.flag}" alt="Equipo2">
+                                <h3 class="p-y3 teamNombre">${partido.Visitante.nombre}</h3>
+                                <div class="contador">
+                                    <button>-</button>
+                                    <h3 class="p-y3 teamScore">${partido.resultado[1]}</h3>
+                                    <button>+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=""></div>
+                    </div>
+                    <div class="fecha p-t2">
+                        <div class="stadium">
+                            <div class="p-y text-left bold">Estadio</div>
+                            <div class="text-left"><strong>Monumental</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+            
+
+            console.log(partido)   
+        }
+        container.innerHTML = Cardlist         
+    }
+}
+
+CrearGrupos()
 
 
 
 
 
+ 
 
+
+
+
+// console.log(elemento.grupo)
+        // let card = document.createElement('div')
+        // card.setAttribute('class', "card");
+        // container.appendChild(card)
+
+        // let partido = document.createElement('div')
+        // partido.setAttribute('class', "partido");
+        // card.appendChild(partido)
+
+        // let cardPosition = document.createElement('div')
+        // cardPosition.setAttribute('class', "cardPosition");
+        // partido.appendChild(cardPosition)
+
+        // let cardHeader = document.createElement('div')
+        // cardHeader.setAttribute('class', "cardHeader p-b2");
+        // cardPosition.appendChild(cardHeader)
+        
+        // let cardDiv = document.createElement('div')
+        // cardDiv.setAttribute('class', "cardDiv");
+        // cardHeader.appendChild(cardDiv)
+
+        // let cardTitle = document.createElement('div')
+        // cardTitle.setAttribute('class', "cardTitle p-y dateLeft bold");
+        // cardDiv.appendChild(cardTitle)
+
+        // let grupoPartido = document.createElement('h2')
+        // grupoPartido.setAttribute('class', "cardTitle p-y dateLeft bold");
+        // cardDiv.appendChild(grupoPartido)
