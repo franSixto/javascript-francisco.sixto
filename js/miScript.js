@@ -124,11 +124,11 @@ const partidoX2 = partidosGrupoA[2]
 const partidoX3 = partidosGrupoA[3]
 const partidoX4 = partidosGrupoA[4]
 
-let GolesLocal = parseInt(prompt("Cargar Resultado Local: "))
-let GolesVisitante = parseInt(prompt("Cargar Resultado Visitante: "))
-alert("Cargaste el resultado del primer partido :)")
+// let GolesLocal = parseInt(prompt("Cargar Resultado Local: "))
+// let GolesVisitante = parseInt(prompt("Cargar Resultado Visitante: "))
+// alert("Cargaste el resultado del primer partido :)")
 
- partidoX.cargarResultado(GolesLocal, GolesVisitante)
+//  partidoX.cargarResultado(GolesLocal, GolesVisitante)
 // partidoX2.cargarResultado(GolesLocal, GolesVisitante)
 // partidoX3.cargarResultado(GolesLocal, GolesVisitante)
 // partidoX4.cargarResultado(GolesLocal, GolesVisitante)
@@ -188,9 +188,13 @@ function CrearGrupos () {
                                 <img class="team" src="${partido.Local.flag}" alt="Equipo1">
                                 <h3 class="p-y3 teamNombre">${partido.Local.nombre}</h3>
                                 <div class="contador">
-                                    <button>-</button>
-                                    <h3 class="p-y3 teamScore">${partido.resultado[0]}</h3>
-                                    <button>+</button>
+                                <div class="counter-container">
+                                    <button class="counter" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="restar(this)" id="${partido.id}-menos-local">-</button>
+                                </div>  
+                                    <h3 id="${partido.id}-local" class="p-y3 teamScore">${partido.resultado[0]}</h3>
+                                <div class="counter-container">
+                                    <button class="counter" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="sumar(this)" id="${partido.id}-mas-local">+</button>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -200,9 +204,13 @@ function CrearGrupos () {
                                 <img class="team" src="${partido.Visitante.flag}" alt="Equipo2">
                                 <h3 class="p-y3 teamNombre">${partido.Visitante.nombre}</h3>
                                 <div class="contador">
-                                    <button>-</button>
-                                    <h3 class="p-y3 teamScore">${partido.resultado[1]}</h3>
-                                    <button>+</button>
+                                    <div class="counter-container">
+                                        <button class="counter" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="restar(this)" id="${partido.id}-menos-visitante">-</button>
+                                    </div>
+                                    <h3 id="${partido.id}-visitante" class="p-y3 teamScore">${partido.resultado[1]}</h3>
+                                    <div class="counter-container">
+                                    <button class="counter" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="sumar(this)" id="${partido.id}-mas-visitante">+</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -224,6 +232,43 @@ function CrearGrupos () {
         container.innerHTML = Cardlist         
     }
 }
+
+
+function botonhover (boton) {
+    boton.classList.add ("counter-hover");
+
+}
+
+function botonout (boton) {
+    boton.classList.remove("counter-hover")
+}
+
+function botonclick (boton) {
+boton.classList.add("click");
+}
+
+function botonup (boton) {
+    boton.classList.remove("click");
+    }
+
+function sumar (boton) {
+    let localscore = boton.id.split("-") [2]
+    let contadorId = boton.id.split("-") [0] + "-" + localscore
+    const Contador = document.getElementById(contadorId)
+    const nuevoValor = parseInt(Contador.innerHTML)+ 1
+    Contador.innerHTML = nuevoValor
+}
+
+function restar (boton) {
+    let localscore = boton.id.split("-") [2]
+    let contadorId = boton.id.split("-") [0] + "-" + localscore
+    const Contador = document.getElementById(contadorId)
+    const nuevoValor = parseInt(Contador.innerHTML)- 1
+    if (parseInt(Contador.innerHTML) === 0 ) return 
+    Contador.innerHTML = nuevoValor
+}
+
+
 
 CrearGrupos()
 
