@@ -1,0 +1,34 @@
+const NombresEquipos = ["Qatar", "Ecuador", "Senegal", "Holanda",
+                        "Inglaterra", "Irán", "Estados Unidos", "Wales", 
+                        "Argentina", "Arabia Saudita", "México", "Polonia",
+                        "Francia", "Autralia", "Dinamarca", "Tunez", 
+                        "Alemania", "Costa Rica", "España", "Japón", 
+                        "Bélgica", "Canadá", "Marruecos", "Croacia", 
+                        "Brasil", "Serbia", "Suiza", "Camerun", 
+                        "Ghana", "Korea", "Portugal", "Uruguay"]
+
+const Grupo = ["A", "A", "A", "A", 
+               "B", "B", "B", "B",
+               "C", "C", "C", "C", 
+               "D", "D", "D", "D",
+               "E", "E", "E", "E", 
+               "F", "F", "F", "F",
+               "G", "G", "G", "G",
+               "H", "H", "H", "H"]
+
+const Flag = ["Qatar.png", "Ecuador.png", "Senegal.png", "Holanda.png", 
+              "Inglaterra.png", "Iran.png", "Estados-Unidos.png", "Walles.png", 
+              "Argentina.png", "Arabia Saudita.png", "Mexico.png", "Polonia.png",
+              "Francia.png", "Australia.png", "Dinamarca.png", "Tunez.png", 
+              "Alemania.png", "Costa Rica.png", "Espana.png", "Japon.png", 
+              "Belgica.png", "Canada.png", "Marruecos.png", "Croacia.png",              
+              "Brasil.png", "Serbia.png", "Suiza.png", "Camerun.png",
+              "Ghana.png", "Korea.png", "Portugal.png", "Uruguay.png"]
+
+const PositionInGroup = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+
+Con esta función recorrí y creé un json.
+
+var data = NombresEquipos.map((equipo, i) =>{
+    return {nombre_equipo: equipo, grupo: Grupo[i], img: Flag[i], posicion: PositionInGroup[i] }
+} )

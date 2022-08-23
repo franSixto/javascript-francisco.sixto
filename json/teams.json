@@ -1,0 +1,196 @@
+{
+    "equipos": [
+        {
+            "nombre_equipo": "Qatar",
+            "grupo": "A",
+            "img": "Qatar.png",
+            "posicion": 1
+        },
+        {
+            "nombre_equipo": "Ecuador",
+            "grupo": "A",
+            "img": "Ecuador.png",
+            "posicion": 2
+        },
+        {
+            "nombre_equipo": "Senegal",
+            "grupo": "A",
+            "img": "Senegal.png",
+            "posicion": 3
+        },
+        {
+            "nombre_equipo": "Holanda",
+            "grupo": "A",
+            "img": "Holanda.png",
+            "posicion": 4
+        },
+        {
+            "nombre_equipo": "Inglaterra",
+            "grupo": "B",
+            "img": "Inglaterra.png",
+            "posicion": 1
+        },
+        {
+            "nombre_equipo": "Irán",
+            "grupo": "B",
+            "img": "Iran.png",
+            "posicion": 2
+        },
+        {
+            "nombre_equipo": "Estados Unidos",
+            "grupo": "B",
+            "img": "Estados-Unidos.png",
+            "posicion": 3
+        },
+        {
+            "nombre_equipo": "Wales",
+            "grupo": "B",
+            "img": "Walles.png",
+            "posicion": 4
+        },
+        {
+            "nombre_equipo": "Argentina",
+            "grupo": "C",
+            "img": "Argentina.png",
+            "posicion": 1
+        },
+        {
+            "nombre_equipo": "Arabia Saudita",
+            "grupo": "C",
+            "img": "Arabia Saudita.png",
+            "posicion": 2
+        },
+        {
+            "nombre_equipo": "México",
+            "grupo": "C",
+            "img": "Mexico.png",
+            "posicion": 3
+        },
+        {
+            "nombre_equipo": "Polonia",
+            "grupo": "C",
+            "img": "Polonia.png",
+            "posicion": 4
+        },
+        {
+            "nombre_equipo": "Francia",
+            "grupo": "D",
+            "img": "Francia.png",
+            "posicion": 1
+        },
+        {
+            "nombre_equipo": "Autralia",
+            "grupo": "D",
+            "img": "Australia.png",
+            "posicion": 2
+        },
+        {
+            "nombre_equipo": "Dinamarca",
+            "grupo": "D",
+            "img": "Dinamarca.png",
+            "posicion": 3
+        },
+        {
+            "nombre_equipo": "Tunez",
+            "grupo": "D",
+            "img": "Tunez.png",
+            "posicion": 4
+        },
+        {
+            "nombre_equipo": "Alemania",
+            "grupo": "E",
+            "img": "Alemania.png",
+            "posicion": 1
+        },
+        {
+            "nombre_equipo": "Costa Rica",
+            "grupo": "E",
+            "img": "Costa Rica.png",
+            "posicion": 2
+        },
+        {
+            "nombre_equipo": "España",
+            "grupo": "E",
+            "img": "Espana.png",
+            "posicion": 3
+        },
+        {
+            "nombre_equipo": "Japón",
+            "grupo": "E",
+            "img": "Japon.png",
+            "posicion": 4
+        },
+        {
+            "nombre_equipo": "Bélgica",
+            "grupo": "F",
+            "img": "Belgica.png",
+            "posicion": 1
+        },
+        {
+            "nombre_equipo": "Canadá",
+            "grupo": "F",
+            "img": "Canada.png",
+            "posicion": 2
+        },
+        {
+            "nombre_equipo": "Marruecos",
+            "grupo": "F",
+            "img": "Marruecos.png",
+            "posicion": 3
+        },
+        {
+            "nombre_equipo": "Croacia",
+            "grupo": "F",
+            "img": "Croacia.png",
+            "posicion": 4
+        },
+        {
+            "nombre_equipo": "Brasil",
+            "grupo": "G",
+            "img": "Brasil.png",
+            "posicion": 1
+        },
+        {
+            "nombre_equipo": "Serbia",
+            "grupo": "G",
+            "img": "Serbia.png",
+            "posicion": 2
+        },
+        {
+            "nombre_equipo": "Suiza",
+            "grupo": "G",
+            "img": "Suiza.png",
+            "posicion": 3
+        },
+        {
+            "nombre_equipo": "Camerun",
+            "grupo": "G",
+            "img": "Camerun.png",
+            "posicion": 4
+        },
+        {
+            "nombre_equipo": "Ghana",
+            "grupo": "H",
+            "img": "Ghana.png",
+            "posicion": 1
+        },
+        {
+            "nombre_equipo": "Korea",
+            "grupo": "H",
+            "img": "Korea.png",
+            "posicion": 2
+        },
+        {
+            "nombre_equipo": "Portugal",
+            "grupo": "H",
+            "img": "Portugal.png",
+            "posicion": 3
+        },
+        {
+            "nombre_equipo": "Uruguay",
+            "grupo": "H",
+            "img": "Uruguay.png",
+            "posicion": 4
+        }
+    ]
+}
