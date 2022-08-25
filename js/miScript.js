@@ -196,12 +196,7 @@ async function main () {
                         </div>
                         <div class=""></div>
                         </div>
-                        <div class="fecha p-t2">
-                            <div class="stadium">
-                                <div class="p-y text-left bold">Estadio</div>
-                                <div class="text-left"><strong>Monumental</strong></div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>`
                 
