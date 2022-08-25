@@ -244,10 +244,10 @@ main()
 // console.log(partidosGrupoG)
 // console.log(partidosGrupoH)
 
-const partidoX = partidosGrupoA[1]
-const partidoX2 = partidosGrupoA[2]
-const partidoX3 = partidosGrupoA[3]
-const partidoX4 = partidosGrupoA[4]
+// const partidoX = partidosGrupoA[1]
+// const partidoX2 = partidosGrupoA[2]
+// const partidoX3 = partidosGrupoA[3]
+// const partidoX4 = partidosGrupoA[4]
 
 // let GolesLocal = parseInt(prompt("Cargar Resultado Local: "))
 // let GolesVisitante = parseInt(prompt("Cargar Resultado Visitante: "))
