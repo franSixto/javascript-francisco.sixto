@@ -37,7 +37,6 @@ function CrearPartido (id, Local, Visitante, dia, hora, resultado=[0, 0]) {
     this.cargarResultado = function (A, B){
         this.resultado = [A, B]
     }
-    // Acá tengo que empezar a poner todas las funciones :(
 }
 
 
@@ -65,6 +64,30 @@ function sumar (boton) {
     const Contador = document.getElementById(contadorId)
     const nuevoValor = parseInt(Contador.innerHTML)+ 1
     Contador.innerHTML = nuevoValor
+    let grupo = boton.getAttribute("data-info").split(" ")[0]
+    let partidoID = boton.getAttribute("data-info").split(" ")[1]
+    partidoID += ` ${grupo}`
+    let indicePartido = localscore === "visitante" ? 1:0
+    let nombreGrupo = `Grupo ${grupo}` // Grupo A, Grupo B, etc
+    let EnfrentamientosActualizados = window.Enfrentamientos.map(enfrentamiento => {
+        let elem = enfrentamiento
+        let partidos = []
+        if(elem.grupo === nombreGrupo) {
+            partidos = elem.partidos.map(partido => {
+                if(partido.id === partidoID) {
+                    let nuevosResultados = partido.resultado || [0, 0]
+                    // console.log(nuevosResultados)
+                    nuevosResultados[indicePartido] = nuevoValor
+                    return {...partido, resultado: nuevosResultados}
+                }
+                return partido
+            })
+        }
+        console.log({...elem, partidos})
+        return {...elem, partidos}
+    })
+    window.Enfrentamientos = EnfrentamientosActualizados
+    // console.log(EnfrentamientosActualizados)
 }
 
 function restar (boton) {
@@ -74,11 +97,56 @@ function restar (boton) {
     const nuevoValor = parseInt(Contador.innerHTML)- 1
     if (parseInt(Contador.innerHTML) === 0 ) return 
     Contador.innerHTML = nuevoValor
+    let grupo = boton.getAttribute("data-info").split(" ")[0]
+    let partidoID = boton.getAttribute("data-info").split(" ")[1]
+    partidoID += ` ${grupo}`
+    let indicePartido = localscore === "visitante" ? 1:0
+    let nombreGrupo = `Grupo ${grupo}` // Grupo A, Grupo B, etc
+    let EnfrentamientosActualizados = window.Enfrentamientos.map(enfrentamiento => {
+        let elem = enfrentamiento
+        let partidos = []
+        if(elem.grupo === nombreGrupo) {
+            partidos = elem.partidos.map(partido => {
+                if(partido.id === partidoID) {
+                    let nuevosResultados = partido.resultado || [0, 0]
+                    // console.log(nuevosResultados)
+                    nuevosResultados[indicePartido] = nuevoValor
+                    return {...partido, resultado: nuevosResultados}
+                }
+                return partido
+            })
+        }
+        console.log({...elem, partidos})
+        return {...elem, partidos}
+    })
+    window.Enfrentamientos = EnfrentamientosActualizados
 }
 
 
 async function main () {
+    // window.addEventListener("load", () => {
+    //     const enfrentamientosPrevios = JSON.parse(localStorage.getItem("Enfrentamientos"))
+    //     if(enfrentamientosPrevios) Enfrentamientos = enfrentamientosPrevios
+    // })
+    document.getElementById("AgregarPronostico").addEventListener("click", () => {
+        window.Swal.fire({
+            showDenyButton: true,
+            title: 'Confirmar resultados',
+            text: 'Estás a punto de cargar los resultados ¿Desea continuar?',
+            icon: 'info',
+            confirmButtonText: 'Si, continuar',
+            denyButtonText: 'Cancelar',        
+          })
+          .then(result => {
+            if (result.isConfirmed){
+                window.Enfrentamientos = Enfrentamientos
+                const EnfrentamientosValores = JSON.stringify(Enfrentamientos)
+                localStorage.removeItem("Enfrentamientos")
+                localStorage.setItem("Enfrentamientos", EnfrentamientosValores)
+            } 
+          })
 
+    })
     let EQUIPOS_DATA = []
     const res = await fetch('../json/teams.json')
     const data = await res.json()
@@ -100,7 +168,7 @@ async function main () {
 
     //EQUIPOS POR GRUPOS
     const cantidadEquiposPorGrupo = 4 
-    const cantidadPartidos = (cantidadEquiposPorGrupo * cantidadEquiposPorGrupo - 1) / 2
+    // const cantidadPartidos = (cantidadEquiposPorGrupo * cantidadEquiposPorGrupo - 1) / 2
 
     let partidosGrupoA = [] 
     let partidosGrupoB = []
@@ -115,19 +183,19 @@ async function main () {
         const local = i
         for (let j = 1 + i; j < cantidadEquiposPorGrupo; j++ ){
             const fecha = new Date()
-            partidosGrupoA.push (new CrearPartido (Math.random(), Equipos[i],Equipos[j],formatDate(fecha), formatHours(fecha)))
-            partidosGrupoB.push (new CrearPartido (Math.random(), Equipos[i+4],Equipos[j+4],formatDate(fecha), formatHours(fecha)))
-            partidosGrupoC.push (new CrearPartido (Math.random(), Equipos[i+8],Equipos[j+8],formatDate(fecha), formatHours(fecha)))
-            partidosGrupoD.push (new CrearPartido (Math.random(), Equipos[i+12],Equipos[j+12],formatDate(fecha), formatHours(fecha)))
-            partidosGrupoE.push (new CrearPartido (Math.random(), Equipos[i+16],Equipos[j+16],formatDate(fecha), formatHours(fecha)))
-            partidosGrupoF.push (new CrearPartido (Math.random(), Equipos[i+20],Equipos[j+20],formatDate(fecha), formatHours(fecha)))
-            partidosGrupoG.push (new CrearPartido (Math.random(), Equipos[i+24],Equipos[j+24],formatDate(fecha), formatHours(fecha)))
-            partidosGrupoH.push (new CrearPartido (Math.random(), Equipos[i+28],Equipos[j+28],formatDate(fecha), formatHours(fecha)))
+            partidosGrupoA.push (new CrearPartido (`${i}${j} A`, Equipos[i],Equipos[j],formatDate(fecha), formatHours(fecha)))
+            partidosGrupoB.push (new CrearPartido (`${i}${j} B`, Equipos[i+4],Equipos[j+4],formatDate(fecha), formatHours(fecha)))
+            partidosGrupoC.push (new CrearPartido (`${i}${j} C`, Equipos[i+8],Equipos[j+8],formatDate(fecha), formatHours(fecha)))
+            partidosGrupoD.push (new CrearPartido (`${i}${j} D`, Equipos[i+12],Equipos[j+12],formatDate(fecha), formatHours(fecha)))
+            partidosGrupoE.push (new CrearPartido (`${i}${j} E`, Equipos[i+16],Equipos[j+16],formatDate(fecha), formatHours(fecha)))
+            partidosGrupoF.push (new CrearPartido (`${i}${j} F`, Equipos[i+20],Equipos[j+20],formatDate(fecha), formatHours(fecha)))
+            partidosGrupoG.push (new CrearPartido (`${i}${j} G`, Equipos[i+24],Equipos[j+24],formatDate(fecha), formatHours(fecha)))
+            partidosGrupoH.push (new CrearPartido (`${i}${j} H`, Equipos[i+28],Equipos[j+28],formatDate(fecha), formatHours(fecha)))
         }
     }
 
     let container = document.getElementById ("container")
-    const Enfrentamientos = [
+    let Enfrentamientos = [
         {grupo: "Grupo A", partidos:partidosGrupoA},
         {grupo: "Grupo B", partidos:partidosGrupoB},
         {grupo: "Grupo C", partidos:partidosGrupoC},
@@ -137,6 +205,11 @@ async function main () {
         {grupo: "Grupo G", partidos:partidosGrupoG},
         {grupo: "Grupo H", partidos:partidosGrupoH},
     ]
+
+    const enfrentamientosPrevios = JSON.parse(localStorage.getItem("Enfrentamientos"))
+    if(enfrentamientosPrevios) Enfrentamientos = enfrentamientosPrevios
+
+    window.Enfrentamientos = Enfrentamientos
         
         
     function CrearGrupos () {
@@ -168,11 +241,11 @@ async function main () {
                                     <h3 class="p-y3 teamNombre">${partido.Local.nombre}</h3>
                                     <div class="contador">
                                     <div class="counter-container">
-                                        <button class="counter" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="restar(this)" id="${partido.id}-menos-local">-</button>
+                                        <button class="counter" data-info="${partido.Local.group} ${partido.id}" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="restar(this)" id="${partido.id}-menos-local">-</button>
                                     </div>  
                                         <h3 id="${partido.id}-local" class="p-y3 teamScore">${partido.resultado[0]}</h3>
                                     <div class="counter-container">
-                                        <button class="counter" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="sumar(this)" id="${partido.id}-mas-local">+</button>
+                                        <button class="counter" data-info="${partido.Local.group} ${partido.id}" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="sumar(this)" id="${partido.id}-mas-local">+</button>
                                     </div>
                                     </div>
                                 </div>
@@ -184,11 +257,11 @@ async function main () {
                                     <h3 class="p-y3 teamNombre">${partido.Visitante.nombre}</h3>
                                     <div class="contador">
                                         <div class="counter-container">
-                                            <button class="counter" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="restar(this)" id="${partido.id}-menos-visitante">-</button>
+                                            <button class="counter" data-info="${partido.Visitante.group} ${partido.id}" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="restar(this)" id="${partido.id}-menos-visitante">-</button>
                                         </div>
                                         <h3 id="${partido.id}-visitante" class="p-y3 teamScore">${partido.resultado[1]}</h3>
                                         <div class="counter-container">
-                                        <button class="counter" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="sumar(this)" id="${partido.id}-mas-visitante">+</button>
+                                        <button class="counter" data-info="${partido.Visitante.group} ${partido.id}" onmousedown="botonclick(this)" onmouseover="botonhover(this)" onmouseout="botonout(this)" onmouseup="botonup(this)" onclick="sumar(this)" id="${partido.id}-mas-visitante">+</button>
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +269,6 @@ async function main () {
                         </div>
                         <div class=""></div>
                         </div>
-                        
                     </div>
                 </div>`
                 
@@ -213,98 +285,3 @@ async function main () {
 
 
 main()
-
-
-
-
-
-
-
-
-
-
-
-
-//INDEXACIÓN DE EQUIPOS POR GRUPOS
-
-
-
-
-// console.log(partidosGrupoA)
-// console.log(partidosGrupoB)
-// console.log(partidosGrupoC)
-// console.log(partidosGrupoD)
-// console.log(partidosGrupoE)
-// console.log(partidosGrupoF)
-// console.log(partidosGrupoG)
-// console.log(partidosGrupoH)
-
-// const partidoX = partidosGrupoA[1]
-// const partidoX2 = partidosGrupoA[2]
-// const partidoX3 = partidosGrupoA[3]
-// const partidoX4 = partidosGrupoA[4]
-
-// let GolesLocal = parseInt(prompt("Cargar Resultado Local: "))
-// let GolesVisitante = parseInt(prompt("Cargar Resultado Visitante: "))
-// alert("Cargaste el resultado del primer partido :)")
-
-//  partidoX.cargarResultado(GolesLocal, GolesVisitante)
-// partidoX2.cargarResultado(GolesLocal, GolesVisitante)
-// partidoX3.cargarResultado(GolesLocal, GolesVisitante)
-// partidoX4.cargarResultado(GolesLocal, GolesVisitante)
-
-
-// partidoX.resultadoPartido()
-// partidoX2.resultadoPartido()
-// partidoX3.resultadoPartido()
-// partidoX4.resultadoPartido()
-
-
-// let container = document.getElementById ("container")
-
-
-// for (let i=0; i < Grupo.length ; i++) {
-//     let NuevoGrupo = document.createElement('div')
-//     NuevoGrupo.setAttribute('id', Grupo[i]);
-//     container.innerHTML(NuevoGrupo) 
-// }
-
-
-
-
-
-
-
- 
-
-
-
-
-// console.log(elemento.grupo)
-        // let card = document.createElement('div')
-        // card.setAttribute('class', "card");
-        // container.appendChild(card)
-
-        // let partido = document.createElement('div')
-        // partido.setAttribute('class', "partido");
-        // card.appendChild(partido)
-
-        // let cardPosition = document.createElement('div')
-        // cardPosition.setAttribute('class', "cardPosition");
-        // partido.appendChild(cardPosition)
-
-        // let cardHeader = document.createElement('div')
-        // cardHeader.setAttribute('class', "cardHeader p-b2");
-        // cardPosition.appendChild(cardHeader)
-        
-        // let cardDiv = document.createElement('div')
-        // cardDiv.setAttribute('class', "cardDiv");
-        // cardHeader.appendChild(cardDiv)
-
-        // let cardTitle = document.createElement('div')
-        // cardTitle.setAttribute('class', "cardTitle p-y dateLeft bold");
-        // cardDiv.appendChild(cardTitle)
-
-        // let grupoPartido = document.createElement('h2')
-        // grupoPartido.setAttribute('class', "cardTitle p-y dateLeft bold");
-        // cardDiv.appendChild(grupoPartido)
