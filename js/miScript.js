@@ -122,6 +122,17 @@ function restar (boton) {
     window.Enfrentamientos = EnfrentamientosActualizados
 }
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
 
 async function main () {
     // window.addEventListener("load", () => {
@@ -134,6 +145,12 @@ async function main () {
             title: 'Confirmar resultados',
             text: 'Estás a punto de cargar los resultados ¿Desea continuar?',
             icon: 'info',
+            backdrop: `
+                rgba(0,0,0)
+                url("/img/worldcup.gif")
+                left top
+                no-repeat
+                `,    
             confirmButtonText: 'Si, continuar',
             denyButtonText: 'Cancelar',        
           })
@@ -143,6 +160,10 @@ async function main () {
                 const EnfrentamientosValores = JSON.stringify(Enfrentamientos)
                 localStorage.removeItem("Enfrentamientos")
                 localStorage.setItem("Enfrentamientos", EnfrentamientosValores)
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Los resultados fueron guardados correctamente'
+                  })
             } 
           })
 
